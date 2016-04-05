@@ -24,7 +24,6 @@
     disabledPackages: [
       "atom-ternjs"
       "editorconfig"
-      "sync-settings"
     ]
     packagesWithKeymapsDisabled: [
       "pigments"
