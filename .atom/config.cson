@@ -28,6 +28,9 @@
       "atom-ternjs"
       "editorconfig"
       "language-typescript-grammars-only"
+      "activate-power-mode"
+      "atom-handlebars"
+      "linter-eslint"
     ]
     packagesWithKeymapsDisabled: [
       "pigments"
