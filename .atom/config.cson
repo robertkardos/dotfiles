@@ -24,6 +24,8 @@
     disabledPackages: [
       "atom-ternjs"
       "editorconfig"
+      "activate-power-mode"
+      "language-typescript-grammars-only"
     ]
     packagesWithKeymapsDisabled: [
       "pigments"
@@ -34,6 +36,7 @@
       "solarized-dark-syntax"
     ]
   editor:
+    fontSize: 17
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -67,6 +70,7 @@
     usePreviewTabs: true
   "tabs-to-spaces":
     onSave: "untabify"
-  "tree-view": {}
+  "tree-view":
+    showOnRightSide: true
   welcome:
     showOnStartup: false
