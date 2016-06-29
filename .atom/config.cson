@@ -7,11 +7,14 @@
     minimap: true
     tabs: "multiple"
   "activate-power-mode":
+    autoToggle: false
     particles:
       size: {}
       spawnCount: {}
       totalCount: {}
-    screenShake: {}
+    screenShake:
+      maxIntensity: 2
+  "atom-typescript": {}
   "autohide-tree-view":
     hideDelay: 100
     showDelay: 100
@@ -24,8 +27,10 @@
     disabledPackages: [
       "atom-ternjs"
       "editorconfig"
-      "activate-power-mode"
       "language-typescript-grammars-only"
+      "activate-power-mode"
+      "atom-handlebars"
+      "linter-eslint"
     ]
     packagesWithKeymapsDisabled: [
       "pigments"
@@ -43,6 +48,7 @@
     softTabs: false
     tabLength: 4
     tabType: "hard"
+    zoomFontWhenCtrlScrolling: true
   "exception-reporting":
     userId: "60a76e4b-00d1-9e26-588d-c618c6ac9c67"
   "file-icons": {}
@@ -52,6 +58,7 @@
     globalNodePath: "/home/kedveshentes/.nvm/versions/node/v4.2.6"
   "local-config":
     applyOnActivation: true
+  "local-settings": {}
   minimap:
     charWidth: 2
     plugins:
@@ -72,5 +79,12 @@
     onSave: "untabify"
   "tree-view":
     showOnRightSide: true
+  "unity-ui": {}
   welcome:
     showOnStartup: false
+".source.ts":
+  editor:
+    tabLength: 4
+".source.tsx":
+  editor:
+    tabLength: 4

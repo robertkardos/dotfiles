@@ -15,7 +15,7 @@ ln -sv ~/dotfiles/.vimrc ~
 
 ln -sv ~/dotfiles/.tmux.conf ~
 
-touch .bashrc_local
+touch ~/.bashrc_local
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
