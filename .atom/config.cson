@@ -26,11 +26,13 @@
     destroyEmptyPanes: false
     disabledPackages: [
       "atom-ternjs"
-      "editorconfig"
       "language-typescript-grammars-only"
       "activate-power-mode"
       "atom-handlebars"
       "linter-eslint"
+      "atom-jade"
+      "local-settings"
+      "local-config"
     ]
     packagesWithKeymapsDisabled: [
       "pigments"
@@ -47,7 +49,6 @@
     showInvisibles: true
     softTabs: false
     tabLength: 4
-    tabType: "hard"
     zoomFontWhenCtrlScrolling: true
   "exception-reporting":
     userId: "60a76e4b-00d1-9e26-588d-c618c6ac9c67"
@@ -82,6 +83,15 @@
   "unity-ui": {}
   welcome:
     showOnStartup: false
+".coffee.jsx.source":
+  editor:
+    tabLength: 4
+".ini.source":
+  editor:
+    tabLength: 4
+".js.jsx.source":
+  editor:
+    tabLength: 4
 ".source.ts":
   editor:
     tabLength: 4
