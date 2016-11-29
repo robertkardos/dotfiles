@@ -26,11 +26,11 @@
     destroyEmptyPanes: false
     disabledPackages: [
       "atom-ternjs"
-      "editorconfig"
       "language-typescript-grammars-only"
       "activate-power-mode"
       "atom-handlebars"
       "linter-eslint"
+      "autohide-tree-view"
     ]
     packagesWithKeymapsDisabled: [
       "pigments"
@@ -46,7 +46,6 @@
     showInvisibles: true
     softTabs: false
     tabLength: 4
-    tabType: "hard"
     zoomFontWhenCtrlScrolling: true
   "exception-reporting":
     userId: "60a76e4b-00d1-9e26-588d-c618c6ac9c67"
@@ -59,13 +58,20 @@
     applyOnActivation: true
   "local-settings": {}
   minimap:
-    charWidth: 2
     plugins:
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
+      "minimap-hide": true
+      "minimap-hideDecorationsZIndex": 0
     scrollAnimation: true
     scrollAnimationDuration: 150
   pigments: {}
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    syncHorizontalScroll: true
   "sync-settings":
     _analyticsUserId: "375c3c43-1c92-45e2-81d4-1bae5281d075"
     _lastBackupHash: "13464ff46957043c0fd966a7700f2d8759bf0b27"
@@ -81,6 +87,9 @@
   "unity-ui": {}
   welcome:
     showOnStartup: false
+".diff.source":
+  editor:
+    tabLength: 4
 ".source.ts":
   editor:
     tabLength: 4

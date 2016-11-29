@@ -24,3 +24,8 @@
   'Console log':
     'prefix': 'cl'
     'body': 'console.log($1)$2'
+
+'.source.ts':
+  'Console log':
+    'prefix': 'cl'
+    'body': 'console.log($1)$2'
