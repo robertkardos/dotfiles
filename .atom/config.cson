@@ -31,6 +31,9 @@
       "atom-handlebars"
       "linter-eslint"
       "autohide-tree-view"
+      "atom-jade"
+      "local-settings"
+      "local-config"
     ]
     packagesWithKeymapsDisabled: [
       "pigments"
@@ -41,6 +44,7 @@
       "solarized-dark-syntax"
     ]
   editor:
+    fontSize: 17
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -87,7 +91,13 @@
   "unity-ui": {}
   welcome:
     showOnStartup: false
-".diff.source":
+".coffee.jsx.source":
+  editor:
+    tabLength: 4
+".ini.source":
+  editor:
+    tabLength: 4
+".js.jsx.source":
   editor:
     tabLength: 4
 ".source.ts":
