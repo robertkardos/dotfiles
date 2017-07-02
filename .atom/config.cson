@@ -1,96 +1,21 @@
 "*":
-  Clean2:
-    hideGutter: false
-    minimapOpacity: 20
-  Zen:
-    gutter: true
-    minimap: true
-    tabs: "multiple"
-  "activate-power-mode":
-    autoToggle: false
-    particles:
-      size: {}
-      spawnCount: {}
-      totalCount: {}
-    screenShake:
-      maxIntensity: 2
-  "atom-typescript": {}
-  "autohide-tree-view":
-    hideDelay: 100
-    showDelay: 100
-    triggerAreaSize: 10
-  "color-picker":
-    triggerKey: "E"
   core:
-    closeEmptyWindows: false
-    destroyEmptyPanes: false
-    disabledPackages: [
-      "atom-ternjs"
-      "language-typescript-grammars-only"
-      "activate-power-mode"
-      "atom-handlebars"
-      "linter-eslint"
-      "autohide-tree-view"
-      "atom-jade"
-      "local-settings"
-      "local-config"
-    ]
-    packagesWithKeymapsDisabled: [
-      "pigments"
-      "color-picker"
-    ]
+    telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
       "solarized-dark-syntax"
     ]
   editor:
-    fontSize: 17
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
-    softTabs: false
-    tabLength: 4
-    zoomFontWhenCtrlScrolling: true
+    tabLength: 3
   "exception-reporting":
-    userId: "60a76e4b-00d1-9e26-588d-c618c6ac9c67"
-  "file-icons": {}
-  "highlight-selected": {}
-  linter: {}
-  "linter-eslint":
-    globalNodePath: "/home/kedveshentes/.nvm/versions/node/v4.2.6"
-  "local-config":
-    applyOnActivation: true
-  "local-settings": {}
+    userId: "46552160-dc78-4ee1-884a-7b18565b5131"
   minimap:
     plugins:
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
-      "minimap-hide": true
-      "minimap-hideDecorationsZIndex": 0
-    scrollAnimation: true
-    scrollAnimationDuration: 150
-  pigments: {}
-  "split-diff":
-    diffWords: true
-    ignoreWhitespace: true
-    leftEditorColor: "red"
-    rightEditorColor: "green"
-    syncHorizontalScroll: true
-  "sync-settings":
-    _analyticsUserId: "375c3c43-1c92-45e2-81d4-1bae5281d075"
-    _lastBackupHash: "13464ff46957043c0fd966a7700f2d8759bf0b27"
-    gistId: "2910cd8851fa38c4fbf9"
-    personalAccessToken: "01bde4edfc3898a1236acbc6d9b8228d4bd5a7f7"
-  tabs:
-    tabScrolling: true
-    usePreviewTabs: true
-  "tabs-to-spaces":
-    onSave: "untabify"
-  "tree-view":
-    showOnRightSide: true
-  "unity-ui": {}
-  welcome:
-    showOnStartup: false
 ".coffee.jsx.source":
   editor:
     tabLength: 4
