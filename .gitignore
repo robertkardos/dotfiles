@@ -1,7 +1,0 @@
-.atom/*
-!.atom/init.coffee
-!.atom/styles.less
-!.atom/config.cson
-!.atom/keymap.cson
-!.atom/packages.cson
-!.atom/snippets.cson
