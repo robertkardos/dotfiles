@@ -1,0 +1,7 @@
+if [ -f "$HOME/dotfiles/.bash_aliases_synced" ]; then
+. "$HOME/dotfiles/.bash_aliases_synced"
+fi
+
+if [ -f "$HOME/dotfiles/.bash_functions_synced" ]; then
+. "$HOME/dotfiles/.bash_functions_synced"
+fi

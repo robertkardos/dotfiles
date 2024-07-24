@@ -4,7 +4,7 @@ function mk() {
 }
 # Open man page as PDF
 function manpdf() {
- man -t "${1}" | open -f -a /Applications/Preview.app/
+  man -t "${1}" | open -f -a /Applications/Preview.app/
 }
 # Extra many types of compressed packages
 # Credit: http://nparikh.org/notes/zshrc.txt
@@ -27,6 +27,6 @@ smartextract() {
       *) echo "'$1' cannot be extracted/mounted via extract()" ;;
     esac
   else
-     echo "'$1' is not a valid file to extract"
+    echo "'$1' is not a valid file to extract"
   fi
 }

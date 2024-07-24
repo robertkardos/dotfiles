@@ -3,6 +3,7 @@ alias la='ls -CAF'
 alias l='ls -CF'
 
 alias cs="cd"
+alias _-copy=" xclip -sel clip"
 
 alias _-restart="sudo shutdown -r now"
 alias _-shutdown="sudo shutdown -h now"
@@ -13,7 +14,9 @@ alias _-aliases="nano ~/.bash_aliases"
 
 alias _-gg='git grep -n $@'
 alias _-ta="tmux a"
+alias _-usb-ugs="sudo chmod 777 /dev/ttyUSB0"
 
+alias _disk-info="ncdu"
 
 alias userinstalled="comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)"
 
@@ -21,3 +24,15 @@ alias userinstalled="comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/l
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
