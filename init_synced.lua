@@ -1,0 +1,1 @@
+print("synced shaite loaded")

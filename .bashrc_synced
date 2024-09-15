@@ -1,3 +1,5 @@
+echo ".bashrc_synced has been read"
+
 if [ -f "$HOME/dotfiles/.bash_aliases_synced" ]; then
 . "$HOME/dotfiles/.bash_aliases_synced"
 fi

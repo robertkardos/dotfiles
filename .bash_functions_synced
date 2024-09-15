@@ -1,3 +1,5 @@
+echo ".bash_functions_synced has been read"
+
 # Create a new directory and enter it
 function mk() {
   mkdir -p "$@" && cd "$@"

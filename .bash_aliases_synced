@@ -1,3 +1,5 @@
+echo ".bash_aliases_synced has been read"
+
 alias ll="ls -Galph"
 alias la='ls -CAF'
 alias l='ls -CF'
@@ -15,6 +17,11 @@ alias _-aliases="nano ~/.bash_aliases"
 alias _-gg='git grep -n $@'
 alias _-ta="tmux a"
 alias _-usb-ugs="sudo chmod 777 /dev/ttyUSB0"
+
+
+alias _-pipreqgen="pip3 freeze > requirements.txt"
+alias _-pipreqinstall="pip3 freeze > requirements.txt"
+
 
 alias _disk-info="ncdu"
 
