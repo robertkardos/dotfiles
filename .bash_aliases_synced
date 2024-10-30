@@ -4,6 +4,8 @@ alias ll="ls -Galph"
 alias la='ls -CAF'
 alias l='ls -CF'
 
+alias v='nvim'
+
 alias cs="cd"
 alias _-copy=" xclip -sel clip"
 
@@ -12,16 +14,15 @@ alias _-shutdown="sudo shutdown -h now"
 alias _-suspend="systemctl suspend"
 
 alias _-sauce="source ~/.bashrc"
-alias _-aliases="nano ~/.bash_aliases"
+alias _-aliases="nvim ~/.bash_aliases; source ~/.bashrc"
+alias _-aliases_synced="nvim ~/dotfiles/.bash_aliases_synced; source ~/.bashrc"
 
 alias _-gg='git grep -n $@'
 alias _-ta="tmux a"
 alias _-usb-ugs="sudo chmod 777 /dev/ttyUSB0"
 
-
 alias _-pipreqgen="pip3 freeze > requirements.txt"
-alias _-pipreqinstall="pip3 freeze > requirements.txt"
-
+alias _-pipreqinstall="pip install -r /path/to/requirements.txt"
 
 alias _disk-info="ncdu"
 
