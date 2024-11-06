@@ -5,6 +5,7 @@ alias la='ls -CAF'
 alias l='ls -CF'
 
 alias v='nvim'
+alias p='python3'
 
 alias cs="cd"
 alias _-copy=" xclip -sel clip"
@@ -21,8 +22,10 @@ alias _-gg='git grep -n $@'
 alias _-ta="tmux a"
 alias _-usb-ugs="sudo chmod 777 /dev/ttyUSB0"
 
-alias _-pipreqgen="pip3 freeze > requirements.txt"
-alias _-pipreqinstall="pip install -r /path/to/requirements.txt"
+alias _-venvreqgen="pip3 freeze > requirements.txt"
+alias _-venvreqinstall="pip install -r requirements.txt"
+alias _-venvsetup="python3 -m venv .venv"
+alias _-venvactivate="source .venv/bin/activate"
 
 alias _disk-info="ncdu"
 

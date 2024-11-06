@@ -1,5 +1,28 @@
 echo ".bashrc_synced has been read"
 
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
+
+#		BASH HISTORY
+
+# Infinite session history
+HISTSIZE=-1
+
+# Infinite history file
+HISTFILESIZE=-1
+
+# Don't store commands that aren't useful in history
+HISTIGNORE='exit:history:l:l[1als]:lla:pwd:+(.)'
+
+# Ignore commands starting with space, and duplicates
+HISTCONTROL='ignoreboth'
+
+export HISTTIMEFORMAT='%F %T - '
+
+#		/ BASH HISTORY
+
+
+
 if [ -f "$HOME/dotfiles/.bash_aliases_synced" ]; then
 . "$HOME/dotfiles/.bash_aliases_synced"
 fi
