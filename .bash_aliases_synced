@@ -18,7 +18,7 @@ alias _-sauce="source ~/.bashrc"
 alias _-aliases="nvim ~/.bash_aliases; source ~/.bashrc"
 alias _-aliases_synced="nvim ~/dotfiles/.bash_aliases_synced; source ~/.bashrc"
 
-alias _-gg='git grep -n $@'
+alias _-gg="git grep -n $*"
 alias _-ta="tmux a"
 alias _-usb-ugs="sudo chmod 777 /dev/ttyUSB0"
 
