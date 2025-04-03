@@ -2,7 +2,8 @@ bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
 set-window-option -g mode-keys vi
 
-
+set -g base-index 1
+setw -g pane-base-index 1
 
 # bind-key -t vi-copy Enter copy-pipe "xclip -i -selection clipboard"
 #bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
@@ -25,15 +26,102 @@ bind-key C-space send-prefix
 
 
 bind c new-window -c "#{pane_current_path}"
-bind '"' split-window -c "#{pane_current_path}"
+bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 
+bind Space last-window
+
+bind -r C-j resize-pane -D 15
+bind -r C-k resize-pane -U 15
+bind -r C-h resize-pane -L 15
+bind -r C-l resize-pane -R 15
+# bind -n q previous-window
+# bind -n C-e next-window
 
 # BIND THIS FOR FULL WINDOW SPLIT: tmux split-window -hf
 
 
+
+
+set -g @DARKEST colour0
+set -g @DARKER colour8
+set -g @LIGHTER colour7
+set -g @LIGHTEST colour15
+set -g @INDICATOR colour125
+set -g @ACCENT1_LIGHT colour6
+set -g @ACCENT2_LIGHT color5
+
+
+
+
+## COLORSCHEME: gruvbox dark (medium)
+set-option -g status "on"
+
+# default statusbar color
+set-option -g status-style							"bg=#{@LIGHTER},fg=#{@ACCENT1_LIGHT}"
+
+# default window title colors
+set-window-option -g window-status-style			"bg=#{@ACCENT1_LIGHT},fg=#{@DARKER}"
+
+# default window with an activity alert
+set-window-option -g window-status-activity-style	"bg=#{@DARKER},fg=#{@ACCENT2_LIGHT}"
+
+# active window title colors
+set-window-option -g window-status-current-style	"bg=red,fg=#{@DARKER}"
+	
+
+setw -g mode-style									"bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST}"
+
+# message infos
+set-option -g message-style							"bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST}"
+
+# writing commands inactive
+set-option -g message-command-style					"bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST}"
+
+# pane number display
+set-option -g display-panes-active-colour			"fg=#{@LIGHTER}"
+set-option -g display-panes-colour					"fg=#{@DARKER}"
+
+# colors for pane borders
+# setw -g pane-border-style							"fg=#{@ACCENT2_LIGHT},#{bg=@DARKEST}"
+setw -g pane-border-style							"fg=#{@LIGHTER},bg=#{@DARKER}"
+setw -g pane-active-border-style					"fg=#{@LIGHTEST},bg=#{@DARKER}"
+
+
+# clock
+set-window-option -g clock-mode-colour				colour109 #blue
+
+# bell
+set-window-option -g window-status-bell-style		"bg=colour167,fg=#{@DARKER}"
+
+## Theme settings mixed with colors (unfortunately, but there is no cleaner way)
+set-option -g status-justify "left"
+set-option -g status-left-style none
+set-option -g status-left-length "80"
+set-option -g status-right-style none
+set-option -g status-right-length "80"
+set-window-option -g window-status-separator ""
+
+set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] Session #S #[bg=#{@LIGHTER},nobold,noitalics,nounderscore] "
+set-option -g status-right							"#[bg=#{@LIGHTER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #[bg=#{@ACCENT2_LIGHT},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@LIGHTER}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
+
+set-window-option -g window-status-current-format	"#[bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,*Z,} #[bg=#{@LIGHTER},fg=#{@LIGHTEST}] "
+set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{@LIGHTER},noitalics] #[bg=#{@LIGHTEST},fg=#{@DARKER}]#I | #W #[bg=#{@LIGHTER},fg=#{@LIGHTER}] "
+
+
+
+# Set the default terminal mode to 256color mode
+set -g default-terminal "screen-256color"
+
+# active pane normal, other shaded out
+setw -g window-style		"fg=#{@LIGHTER},bg=#{@DARKER}"
+setw -g window-active-style	"fg=#{@LIGHTEST},bg=#{@DARKEST}"
+
+
+
+
 set -g mouse on
-set -g @themepack 'default'
+# set -g @themepack 'default'
 
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
