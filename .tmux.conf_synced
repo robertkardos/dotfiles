@@ -58,7 +58,7 @@ set -g @ACCENT2_LIGHT color5
 set-option -g status "on"
 
 # default statusbar color
-set-option -g status-style							"bg=#{@LIGHTER},fg=#{@ACCENT1_LIGHT}"
+set-option -g status-style							"bg=#{@DARKER},fg=#{@ACCENT1_LIGHT}"
 
 # default window title colors
 set-window-option -g window-status-style			"bg=#{@ACCENT1_LIGHT},fg=#{@DARKER}"
@@ -102,11 +102,11 @@ set-option -g status-right-style none
 set-option -g status-right-length "80"
 set-window-option -g window-status-separator ""
 
-set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] Session #S #[bg=#{@LIGHTER},nobold,noitalics,nounderscore] "
-set-option -g status-right							"#[bg=#{@LIGHTER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #[bg=#{@ACCENT2_LIGHT},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@LIGHTER}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
+set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] Session #S #[bg=#{@DARKER},nobold,noitalics,nounderscore] "
+set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #[bg=#{@ACCENT2_LIGHT},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
 
-set-window-option -g window-status-current-format	"#[bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,*Z,} #[bg=#{@LIGHTER},fg=#{@LIGHTEST}] "
-set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{@LIGHTER},noitalics] #[bg=#{@LIGHTEST},fg=#{@DARKER}]#I | #W #[bg=#{@LIGHTER},fg=#{@LIGHTER}] "
+set-window-option -g window-status-current-format	"#[bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,*Z,} #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
+set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{@DARKER},noitalics] #[bg=#{@LIGHTEST},fg=#{@DARKER}]#I | #W #[bg=#{@DARKER},fg=#{@DARKER}] "
 
 
 
