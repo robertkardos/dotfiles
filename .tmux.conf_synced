@@ -79,14 +79,14 @@ set-option -g message-style							"bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST}"
 set-option -g message-command-style					"bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST}"
 
 # pane number display
-set-option -g display-panes-active-colour			"fg=#{@LIGHTER}"
-set-option -g display-panes-colour					"fg=#{@DARKER}"
+#   set-option -g display-panes-active-colour			@LIGHTER
+#   set-option -g display-panes-colour					@DARKER
 
 # colors for pane borders
 # setw -g pane-border-style							"fg=#{@ACCENT2_LIGHT},#{bg=@DARKEST}"
-setw -g pane-border-style							"fg=#{@LIGHTER},bg=#{@DARKER}"
-setw -g pane-active-border-style					"fg=#{@LIGHTEST},bg=#{@DARKER}"
-
+setw -g pane-border-style							"fg=#{@DARKER},bg=#{@DARKEST}"
+setw -g pane-active-border-style					"fg=#{@LIGHTER},bg=#{@DARKEST}"
+set-option -g pane-border-lines heavy
 
 # clock
 set-window-option -g clock-mode-colour				colour109 #blue
@@ -114,9 +114,10 @@ set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{@LIGHTER},no
 set -g default-terminal "screen-256color"
 
 # active pane normal, other shaded out
-setw -g window-style		"fg=#{@LIGHTER},bg=#{@DARKER}"
-setw -g window-active-style	"fg=#{@LIGHTEST},bg=#{@DARKEST}"
-
+#setw -g window-style		"fg=#{@LIGHTER},bg=#{@DARKER}"
+#setw -g window-active-style	"fg=#{@LIGHTEST},bg=#{@DARKEST}"
+#set-option -g pane-border-indicators arrows
+# set-option -g pane-border-status top
 
 
 
@@ -127,6 +128,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
 # set -g @plugin 'dracula/tmux'
 
 run '~/.tmux/plugins/tpm/tpm'
