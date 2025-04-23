@@ -1,0 +1,178 @@
+set shell=/bin/sh
+
+" set no compatible mode
+set nocompatible
+
+" enable syntax highlighting
+syntax on
+
+" always display the statusline
+set laststatus=2
+
+
+" CTRL-b brings up open buffers, tab to choose
+nmap <C-b> :b
+
+
+
+
+set whichwrap+=b,s,<,>,h,l
+
+set statusline=
+set statusline+=%#StatusLine#
+" set statusline+=%#Title#
+set statusline+=\ %f
+set statusline+=%m\
+set statusline+=%=
+set statusline+=%#StatusLine#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ \[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %lL:%cC
+set statusline+=\
+
+" remap the leader key
+nnoremap <space> <nop>
+let mapleader = " "
+map <leader>r :source ~/.vimrc<CR>
+
+
+" enable hybrid line numbering
+set number relativenumber
+highlight CursorLineNr ctermfg=DarkGreen
+
+" set the number of spaces that a tab counts for while performing editing operations
+:set tabstop=4
+:set softtabstop=4
+
+" set the number of spaces to use for each step of (auto)indent
+:set shiftwidth=4
+
+" don't expand tabs to spaces
+:set noexpandtab
+
+" enable automatic indentation, copying indentation from the previous line
+" when starting a new line
+:set autoindent
+
+" indent word-wrapped lines by the same amount as the parent line
+:set breakindent
+
+" when in insert mode, exit it using 'ii'
+" :imap ii <Esc>
+
+" enable file type recognition using a builtin plugin
+filetype plugin on
+
+" search down the directory tree
+set path+=**
+
+" during command-line completion, display all matches upon tab-completion
+set wildmenu
+
+" create a 'tags' file for ctags
+command! Maketags !ctags -R .
+
+" ctags jump to definition under the cursor
+":nnoremap <S-Right> <C-]>
+
+" ctags climb back up the tag stack
+":nnoremap <S-Left> <C-t>
+
+" display keystrokes in the status line as they are entered
+:set showcmd
+
+" tab navigation
+:nnoremap <S-H> :tabprevious<CR>
+:nnoremap <S-L> :tabnext<CR>
+
+" split navigation
+:nnoremap <C-H> <C-W><C-H>
+:nnoremap <C-J> <C-W><C-J>
+:nnoremap <C-K> <C-W><C-K>
+:nnoremap <C-L> <C-W><C-L>
+
+" open splits below and to the right
+set splitbelow
+set splitright
+
+" automatically install junegunn's vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" enable plugins
+call plug#begin()
+Plug 'preservim/NERDTree'
+" Plug 'tpope/vim-obsession'
+Plug 'jlanzarotta/bufexplorer'
+" Plug 'karolbelina/uxntal.vim'
+call plug#end()
+
+" NERDTree mappings
+:nnoremap <leader>n :NERDTreeFocus<CR>
+:nnoremap <leader>t :NERDTreeToggle<CR>
+
+" NERDTree UI changes
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinSize = 26
+
+" use U+2502 as the vertical fill character
+set fillchars+=vert:│
+
+" change vertical split highlight
+hi VertSplit cterm=NONE
+
+
+" word wrapping
+let s:wrapenabled = 0
+function! ToggleWrap()
+    set wrap nolist
+    if s:wrapenabled
+	set nolinebreak
+	unmap j
+	unmap k
+	unmap 0
+	unmap $
+	unmap ^
+	unmap <Down>
+	unmap <Up>
+	let s:wrapenabled = 0
+    else
+	set linebreak
+	nnoremap j gj
+	nnoremap k gk
+	nnoremap 0 g0
+	nnoremap $ g$
+	nnoremap ^ g^
+	nnoremap <Down> g<Down>
+	nnoremap <Up> g<Up>
+	vnoremap j gj
+	vnoremap k gk
+	vnoremap 0 g0
+	vnoremap $ g$
+	vnoremap ^ g^
+	vnoremap <Down> g<Down>
+	vnoremap <Up> g<Up>
+	inoremap <Down> <C-o>gj
+	inoremap <Up> <C-o>gk
+	let s:wrapenabled = 1
+    endif
+endfunction
+
+" mapping to toggle word wrapping
+map <leader>w :call ToggleWrap()<CR>
+
+" start in the special word wrapping mode by default
+:call ToggleWrap()
+
+" disable/unlink italic highlighting in markdown
+:highlight link markdownItalic NONE
+
+
+
+
