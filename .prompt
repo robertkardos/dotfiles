@@ -55,7 +55,7 @@ _bash_prompt_config() {
   P_WHITE_BOLD=${WHITE_BOLD}
   P_CYAN=${CYAN}
   P_CYAN_BOLD=${CYAN_BOLD}
-  P_GREEN=${BRIGHT_GREEN}
+  P_GREEN=${GREEN}
   P_YELLOW=${YELLOW}
   P_RED=${RED}
   P_RED_BOLD=${RED_BOLD}
@@ -94,10 +94,12 @@ bash_prompt_command() {
 
   # Exit code
   if [[ $EXIT_CODE != 0 ]]; then
-    P_EXIT+="${P_RED_BOLD}X ${P_RESET}"
+    P_EXIT+="${P_RED_BOLD}❯${P_RESET}"
+  else
+    P_EXIT+="${P_WHITE_BOLD}❯${P_RESET}"
   fi
 
-  PS1="${P_EXIT}${P_USER}${P_WHITE_BOLD}@${P_RESET}${P_HOST}${P_WHITE_BOLD}|${P_CYAN_BOLD}${P_PWD}${P_RESET}${P_GREEN}${P_GIT}${P_WHITE_BOLD} ❯  ${P_RESET}"
+  PS1="${P_USER}${P_WHITE_BOLD}@${P_RESET}${P_HOST}${P_WHITE_BOLD} ${P_CYAN_BOLD}${P_PWD}${P_RESET}${P_GREEN}${P_GIT}${P_WHITE_BOLD} ${P_EXIT}  ${P_RESET}"
 }
 
 parse_git_branch() {
