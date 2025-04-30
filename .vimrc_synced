@@ -10,20 +10,12 @@ syntax on
 set laststatus=2
 
 
-" CTRL-b brings up open buffers, tab to choose
-nmap <C-b> :b
+" BUFFERS
+nmap <leader><tab> :b 
+nmap <leader>v<tab> :vertical sb 
+nmap <leader>h<tab> :split b 
 
 
-
-
-set whichwrap+=b,s,<,>,h,l
-
-set statusline=
-set statusline+=%#StatusLine#
-" set statusline+=%#Title#
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
 set statusline+=%#StatusLine#
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
@@ -84,14 +76,16 @@ command! Maketags !ctags -R .
 :set showcmd
 
 " tab navigation
-:nnoremap <S-H> :tabprevious<CR>
-:nnoremap <S-L> :tabnext<CR>
+" :nnoremap <S-H> :tabprevious<CR>
+" :nnoremap <S-L> :tabnext<CR>
 
 " split navigation
 :nnoremap <C-H> <C-W><C-H>
 :nnoremap <C-J> <C-W><C-J>
 :nnoremap <C-K> <C-W><C-K>
 :nnoremap <C-L> <C-W><C-L>
+:nnoremap <S-tab> <C-W>w
+
 
 " open splits below and to the right
 set splitbelow
@@ -113,13 +107,14 @@ Plug 'jlanzarotta/bufexplorer'
 call plug#end()
 
 " NERDTree mappings
-:nnoremap <leader>n :NERDTreeFocus<CR>
-:nnoremap <leader>t :NERDTreeToggle<CR>
+" :nnoremap <leader><tab> :NERDTreeFocus<CR>
+" :nnoremap <leader>t :NERDTreeToggle<CR>
+" let NERDTreeShowHidden=1
 
 " NERDTree UI changes
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 26
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
+" let g:NERDTreeWinSize = 26
 
 " use U+2502 as the vertical fill character
 set fillchars+=vert:│
