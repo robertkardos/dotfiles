@@ -6,16 +6,19 @@ set nocompatible
 " enable syntax highlighting
 syntax on
 
-" always display the statusline
-set laststatus=2
-
-
 " BUFFERS
 nmap <leader><tab> :b 
 nmap <leader>v<tab> :vertical sb 
 nmap <leader>h<tab> :split b 
 
+nmap <leader>e :edit ./
 
+
+
+" always display the statusline
+set laststatus=2
+
+set statusline=
 set statusline+=%#StatusLine#
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
