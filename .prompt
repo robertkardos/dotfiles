@@ -49,8 +49,8 @@ _bash_prompt_config() {
   local WHITE_BOLD="${ESC_OPEN}${BOLD}$(_setaf 7)${ESC_CLOSE}"
 
   # Expose the variables we need in prompt command
-  P_USER=${VIOLET}${USER_SYMBOL}
-  P_HOST=${VIOLET}${HOST_SYMBOL}
+  P_USER=${VIOLET_BOLD}${USER_SYMBOL}
+  P_HOST=${VIOLET_BOLD}${HOST_SYMBOL}
   P_WHITE=${WHITE}
   P_WHITE_BOLD=${WHITE_BOLD}
   P_CYAN=${CYAN}
