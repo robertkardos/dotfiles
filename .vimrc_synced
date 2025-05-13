@@ -2,36 +2,46 @@ set shell=/bin/sh
 
 " set no compatible mode
 set nocompatible
+set mouse=a
+set ttymouse=xterm2
 
 " enable syntax highlighting
 syntax on
 
-" BUFFERS
-nmap <leader><tab> :b 
-nmap <leader>v<tab> :vertical sb 
-nmap <leader>h<tab> :split b 
-
-nmap <leader>e :edit ./
-
-
-
-" always display the statusline
-set laststatus=2
-
-set statusline=
-set statusline+=%#StatusLine#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ \[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %lL:%cC
-set statusline+=\
+set hidden
 
 " remap the leader key
 nnoremap <space> <nop>
 let mapleader = " "
 map <leader>r :source ~/.vimrc<CR>
 
+nmap <leader>e :edit ./
+
+" SCROLLING
+nmap <C-up> <C-y>
+nmap <C-down> <C-e>
+" nmap <S-w> :for i in range(1,10) \| :eval(feedkeys("\<C-e>")) \| endfor<CR>
+nmap <S-w> <C-y>
+nmap <S-s> <C-e>
+
+" BUFFERS
+nmap <leader><tab> :b 
+nmap <leader>v<tab> :vertical sb 
+nmap <leader>h<tab> :split b 
+
+" always display the statusline
+set laststatus=2
+
+set statusline=
+set statusline+=%#StatusLine#
+set statusline+=%F
+set statusline+=\ %=
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ \[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %lL:%cC
+set statusline+=\
 
 " enable hybrid line numbering
 set number relativenumber
@@ -59,9 +69,7 @@ highlight CursorLineNr ctermfg=DarkGreen
 
 " enable file type recognition using a builtin plugin
 filetype plugin on
-
-" search down the directory tree
-set path+=**
+" search down the directory tree set path+=**
 
 " during command-line completion, display all matches upon tab-completion
 set wildmenu
@@ -89,10 +97,11 @@ command! Maketags !ctags -R .
 :nnoremap <C-L> <C-W><C-L>
 :nnoremap <S-tab> <C-W>w
 
-
 " open splits below and to the right
 set splitbelow
 set splitright
+
+
 
 " automatically install junegunn's vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -106,8 +115,13 @@ call plug#begin()
 Plug 'preservim/NERDTree'
 " Plug 'tpope/vim-obsession'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'vim-scripts/Smooth-Scroll'
 " Plug 'karolbelina/uxntal.vim'
 call plug#end()
+
+let g:scroll_factor = 7500
+set scroll=4
+
 
 " NERDTree mappings
 " :nnoremap <leader><tab> :NERDTreeFocus<CR>
