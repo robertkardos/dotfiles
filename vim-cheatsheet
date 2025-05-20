@@ -15,7 +15,11 @@ space r				reload .vimrc
 space n				nerdtree focus
 space t				nerdtree toggle
 
-SHIFT tab			split switch
+SHIFT tab
+CTRL w w			split switch
+					
+CTRL w r			rotate windows around
+
 CTRL HJKL			split navigation
 
 
