@@ -22,4 +22,10 @@ CTRL w r			rotate windows around
 
 CTRL HJKL			split navigation
 
+CTRL ]
+CTRL I
+CTRL O
+CTRL T				stack jump shaite
+
+./ctags_script.sh fuckery.c
 
