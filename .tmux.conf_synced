@@ -5,15 +5,12 @@ set-window-option -g mode-keys vi
 set -g base-index 1
 setw -g pane-base-index 1
 
-# bind-key -t vi-copy Enter copy-pipe "xclip -i -selection clipboard"
-#bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+set-window-option -g mode-keys vi
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi V send -X select-line
 
-# For binding 'y' to copy and exiting selection mode
-bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -sel clip -i'
-
-# For binding 'Enter' to copy and not leave selection mode
-#bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel 'xclip -sel clip -i' '\;' send -X clear-selection
-
+set -s copy-command 'xclip -in -selection clipboard'
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 
 # bind-key s choose-tree -Zs
 # bind-key w choose-tree -Zw
@@ -130,5 +127,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-sidebar'
 # set -g @plugin 'dracula/tmux'
+
+# set -g u/yank_action 'copy-pipe' # or 'copy-pipe-and-cancel' for the default
 
 run '~/.tmux/plugins/tpm/tpm'
