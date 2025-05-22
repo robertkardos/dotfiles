@@ -17,7 +17,9 @@ HISTIGNORE='exit:history:l:l[1als]:lla:pwd:+(.)'
 # Ignore commands starting with space, and duplicates
 HISTCONTROL='ignoreboth'
 
-export HISTTIMEFORMAT='%F %T - '
+# export HISTTIMEFORMAT='%F %T - '
+# set the time format for the history file.
+export HISTTIMEFORMAT="%Y.%m.%d %T | "
 
 #		/ BASH HISTORY
 
