@@ -111,8 +111,9 @@ set-window-option -g window-status-separator ""
 set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] Session #S #[bg=#{@DARKER},nobold,noitalics,nounderscore] "
 set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #{?client_prefix,×, } #[bg=#{@ACCENT2_DARK},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
 
-set-window-option -g window-status-current-format	"#[bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,*Z,} #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
-set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{@DARKER},noitalics] #[bg=#{@LIGHTEST},fg=#{@DARKER}]#I | #W #[bg=#{@DARKER},fg=#{@DARKER}] "
+# set-window-option -g window-status-current-format	"#[bg=#{?window_zoomed_flag,@ACCENT2_DARK,@ACCENT1_DARK},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#F #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
+set-window-option -g window-status-current-format	"#[bg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,°,} #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
+set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@DARKEST}},noitalics] #I | #W#{?window_zoomed_flag,°,} #[bg=#{@DARKER},fg=#{@DARKER}] "
 
 
 
