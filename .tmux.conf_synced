@@ -26,12 +26,19 @@ bind c new-window -c "#{pane_current_path}"
 bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 
-bind Space last-window
+bind Space last-pane
+bind C-Space last-window
 
 bind -r C-j resize-pane -D 15
 bind -r C-k resize-pane -U 15
 bind -r C-h resize-pane -L 15
 bind -r C-l resize-pane -R 15
+
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
 # bind -n q previous-window
 # bind -n C-e next-window
 
@@ -47,6 +54,8 @@ set -g @LIGHTEST colour15
 set -g @INDICATOR colour125
 set -g @ACCENT1_LIGHT colour6
 set -g @ACCENT2_LIGHT color5
+set -g @ACCENT1_DARK colour14
+set -g @ACCENT2_DARK color13
 
 
 
@@ -58,7 +67,7 @@ set-option -g status "on"
 set-option -g status-style							"bg=#{@DARKER},fg=#{@ACCENT1_LIGHT}"
 
 # default window title colors
-set-window-option -g window-status-style			"bg=#{@ACCENT1_LIGHT},fg=#{@DARKER}"
+set-window-option -g window-status-style			"bg=#{@ACCENT1_DARK},fg=#{@DARKER}"
 
 # default window with an activity alert
 set-window-option -g window-status-activity-style	"bg=#{@DARKER},fg=#{@ACCENT2_LIGHT}"
@@ -67,13 +76,13 @@ set-window-option -g window-status-activity-style	"bg=#{@DARKER},fg=#{@ACCENT2_L
 set-window-option -g window-status-current-style	"bg=red,fg=#{@DARKER}"
 	
 
-setw -g mode-style									"bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST}"
+setw -g mode-style									"bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST}"
 
 # message infos
-set-option -g message-style							"bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST}"
+set-option -g message-style							"bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST}"
 
 # writing commands inactive
-set-option -g message-command-style					"bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST}"
+set-option -g message-command-style					"bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST}"
 
 # pane number display
 #   set-option -g display-panes-active-colour			@LIGHTER
@@ -100,9 +109,9 @@ set-option -g status-right-length "80"
 set-window-option -g window-status-separator ""
 
 set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] Session #S #[bg=#{@DARKER},nobold,noitalics,nounderscore] "
-set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #[bg=#{@ACCENT2_LIGHT},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
+set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #{?client_prefix,×, } #[bg=#{@ACCENT2_DARK},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
 
-set-window-option -g window-status-current-format	"#[bg=#{@ACCENT1_LIGHT},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,*Z,} #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
+set-window-option -g window-status-current-format	"#[bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,*Z,} #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
 set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{@DARKER},noitalics] #[bg=#{@LIGHTEST},fg=#{@DARKER}]#I | #W #[bg=#{@DARKER},fg=#{@DARKER}] "
 
 
