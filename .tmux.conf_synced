@@ -109,12 +109,11 @@ set-option -g status-right-length "80"
 set-window-option -g window-status-separator ""
 
 set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] Session #S #[bg=#{@DARKER},nobold,noitalics,nounderscore] "
-set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #{?client_prefix,×, } #[bg=#{@ACCENT2_DARK},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
+set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #{?client_prefix,×, } #[bg=#{@ACCENT2_DARK},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@DARKEST},fg=#{@LIGHTEST} nobold, nounderscore, noitalics] #{moon_phase} #{moon_phase_text} #[bg=#{@DARKER},fg=#{@LIGHTEST}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
 
 # set-window-option -g window-status-current-format	"#[bg=#{?window_zoomed_flag,@ACCENT2_DARK,@ACCENT1_DARK},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#F #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
 set-window-option -g window-status-current-format	"#[bg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,°,} #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
 set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@DARKEST}},noitalics] #I | #W#{?window_zoomed_flag,°,} #[bg=#{@DARKER},fg=#{@DARKER}] "
-
 
 
 # Set the default terminal mode to 256color mode
@@ -127,7 +126,6 @@ set -g default-terminal "screen-256color"
 # set-option -g pane-border-status top
 
 
-
 set -g mouse on
 # set -g @themepack 'default'
 
@@ -136,6 +134,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-sidebar'
+set -g @plugin 'chriszarate/tmux-moon-phase'
 # set -g @plugin 'dracula/tmux'
 
 # set -g u/yank_action 'copy-pipe' # or 'copy-pipe-and-cancel' for the default
