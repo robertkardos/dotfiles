@@ -5,6 +5,8 @@ set nocompatible
 set mouse=a
 set ttymouse=xterm2
 
+set hlsearch
+
 " enable syntax highlighting
 syntax on
 
@@ -28,6 +30,10 @@ nmap <S-s> <C-e>
 nmap <leader><tab> :b 
 nmap <leader>v<tab> :vertical sb 
 nmap <leader>h<tab> :split b 
+
+
+" string replace
+nnoremap <leader>R yiw:%s/\<<C-r>"\>//g<left><left>
 
 " always display the statusline
 set laststatus=2
@@ -106,8 +112,8 @@ set splitright
 " automatically install junegunn's vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
-    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " enable plugins
@@ -117,11 +123,40 @@ Plug 'preservim/NERDTree'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'vim-scripts/Smooth-Scroll'
 " Plug 'karolbelina/uxntal.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
 let g:scroll_factor = 7500
 set scroll=4
 
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+let g:asyncomplete_auto_popup = 1
+
+" allow modifying the completeopt variable, or it will
+" be overridden all the time
+let g:asyncomplete_auto_completeopt = 0
+set completeopt=menuone,noinsert,noselect,preview
+
+:highlight Pmenu		ctermbg=8	ctermfg=15 guibg=gray
+:highlight PmenuSel		ctermbg=0	ctermfg=15 
+:highlight PmenuSbar	ctermbg=6	ctermfg=15 guibg=gray
+:highlight PmenuThumb	ctermbg=14	ctermfg=15 guibg=gray
+
+:highlight SignColumn	term=standout	ctermfg=4	ctermbg=0 guifg=DarkBlue guibg=Grey
+:highlight CursorColumn	term=reverse	ctermbg=14	guibg=Grey90
+
+
+nmap <buffer> gd <plug>(lsp-definition)
+
+
+
+:set signcolumn=yes
 
 " NERDTree mappings
 " :nnoremap <leader><tab> :NERDTreeFocus<CR>
@@ -175,6 +210,11 @@ function! ToggleWrap()
 	let s:wrapenabled = 1
     endif
 endfunction
+
+
+
+
+
 
 " mapping to toggle word wrapping
 map <leader>w :call ToggleWrap()<CR>
