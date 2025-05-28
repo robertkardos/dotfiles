@@ -3,7 +3,9 @@ set shell=/bin/sh
 " set no compatible mode
 set nocompatible
 set mouse=a
-set ttymouse=xterm2
+if !has('nvim')
+	set ttymouse=xterm2
+endif
 
 set hlsearch
 
@@ -15,7 +17,12 @@ set hidden
 " remap the leader key
 nnoremap <space> <nop>
 let mapleader = " "
-map <leader>r :source ~/.vimrc<CR>
+
+if has('nvim')
+	map <leader>r :source ~/.config/nvim/init.lua<CR>
+else
+	map <leader>r :source ~/.vimrc<CR>
+endif
 
 nmap <leader>e :edit ./
 
