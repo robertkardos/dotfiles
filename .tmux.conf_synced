@@ -52,10 +52,10 @@ set -g @DARKER colour8
 set -g @LIGHTER colour7
 set -g @LIGHTEST colour15
 set -g @INDICATOR colour125
-set -g @ACCENT1_LIGHT colour6
-set -g @ACCENT2_LIGHT color5
-set -g @ACCENT1_DARK colour14
-set -g @ACCENT2_DARK color13
+set -g @ACCENT1_LIGHT colour14
+set -g @ACCENT2_LIGHT color13
+set -g @ACCENT1_DARK colour6
+set -g @ACCENT2_DARK color5
 
 
 
@@ -108,8 +108,8 @@ set-option -g status-right-style none
 set-option -g status-right-length "80"
 set-window-option -g window-status-separator ""
 
-set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] Session #S #[bg=#{@DARKER},nobold,noitalics,nounderscore] "
-set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #{?client_prefix,×, } #[bg=#{@ACCENT2_DARK},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@DARKEST},fg=#{@LIGHTEST} nobold, nounderscore, noitalics] #{moon_phase} #{moon_phase_text} #[bg=#{@DARKER},fg=#{@LIGHTEST}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_LIGHT},bold] #h "
+set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_DARK},bold] Session #S #[bg=#{@DARKER},nobold,noitalics,nounderscore] "
+set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #{?client_prefix,×, } #[bg=#{@ACCENT2_DARK},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@DARKEST},fg=#{@LIGHTEST} nobold, nounderscore, noitalics] #{moon_phase} #{moon_phase_text} #[bg=#{@DARKER},fg=#{@LIGHTEST}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_DARK},bold] #h "
 
 # set-window-option -g window-status-current-format	"#[bg=#{?window_zoomed_flag,@ACCENT2_DARK,@ACCENT1_DARK},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#F #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
 set-window-option -g window-status-current-format	"#[bg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,°,} #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
