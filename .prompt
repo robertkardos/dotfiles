@@ -31,6 +31,8 @@ _bash_prompt_config() {
   local WHITE="${ESC_OPEN}$(_setaf 7)${ESC_CLOSE}"
 
   # Bright colors
+  local BRIGHT_BLACK="${ESC_OPEN}$(_setaf 8)${ESC_CLOSE}"
+  local BRIGHT_RED="${ESC_OPEN}$(_setaf 9)${ESC_CLOSE}"
   local BRIGHT_GREEN="${ESC_OPEN}$(_setaf 10)${ESC_CLOSE}"
   local BRIGHT_YELLOW="${ESC_OPEN}$(_setaf 11)${ESC_CLOSE}"
   local BRIGHT_BLUE="${ESC_OPEN}$(_setaf 12)${ESC_CLOSE}"
@@ -49,9 +51,10 @@ _bash_prompt_config() {
   local WHITE_BOLD="${ESC_OPEN}${BOLD}$(_setaf 7)${ESC_CLOSE}"
 
   # Expose the variables we need in prompt command
-  P_USER=${VIOLET_BOLD}${USER_SYMBOL}
-  P_HOST=${VIOLET_BOLD}${HOST_SYMBOL}
+  P_USER=${WHITE}${USER_SYMBOL}
+  P_HOST=${WHITE}${HOST_SYMBOL}
   P_WHITE=${WHITE}
+  P_BRIGHT_WHITE=${BRIGHT_WHITE}
   P_WHITE_BOLD=${WHITE_BOLD}
   P_CYAN=${CYAN}
   P_CYAN_BOLD=${CYAN_BOLD}
@@ -61,6 +64,7 @@ _bash_prompt_config() {
   P_RED_BOLD=${RED_BOLD}
   P_VIOLET=${VIOLET}
   P_BRIGHT_VIOLET=${BRIGHT_VIOLET}
+  P_BRIGHT_BLACK=${BRIGHT_BLACK}
   P_VIOLET_BOLD=${VIOLET_BOLD}
   P_RESET=${RESET}
 
@@ -94,12 +98,12 @@ bash_prompt_command() {
 
   # Exit code
   if [[ $EXIT_CODE != 0 ]]; then
-    P_EXIT+="${P_RED_BOLD}❯${P_RESET}"
+    P_EXIT+="${P_RED}❯${P_RESET}"
   else
-    P_EXIT+="${P_WHITE_BOLD}❯${P_RESET}"
+    P_EXIT+="${P_BRIGHT_WHITE}❯${P_RESET}"
   fi
 
-  PS1="${P_USER}${P_WHITE_BOLD}@${P_RESET}${P_HOST}${P_WHITE_BOLD} ${P_CYAN_BOLD}${P_PWD}${P_RESET}${P_GREEN}${P_GIT}${P_WHITE_BOLD} ${P_EXIT}  ${P_RESET}"
+  PS1="${P_USER}${P_BRIGHT_BLACK}@${P_RESET}${P_HOST} ${P_CYAN_BOLD}${P_PWD}${P_RESET}${P_GREEN}${P_GIT} ${P_EXIT}  ${P_RESET}"
 }
 
 parse_git_branch() {
