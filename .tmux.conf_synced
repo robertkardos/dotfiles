@@ -56,6 +56,7 @@ set -g @ACCENT1_LIGHT colour14
 set -g @ACCENT2_LIGHT color13
 set -g @ACCENT1_DARK colour6
 set -g @ACCENT2_DARK color1
+set -g @ACTIVITY_DARK color3 # test with: sleep 3 && printf '\a'
 
 
 
@@ -95,10 +96,12 @@ setw -g pane-active-border-style					"fg=#{@LIGHTER},bg=#{@DARKEST}"
 set-option -g pane-border-lines heavy
 
 # clock
-set-window-option -g clock-mode-colour				colour109 #blue
+set-window-option -g clock-mode-colour				colour2
 
 # bell
 set-window-option -g window-status-bell-style		"bg=colour167,fg=#{@DARKER}"
+set -g monitor-activity on
+
 
 ## Theme settings mixed with colors (unfortunately, but there is no cleaner way)
 set-option -g status-justify "left"
@@ -113,16 +116,24 @@ set-option -g status-left "\
 #[bg=#{@DARKER},fg=#{@LIGHTEST}] Session #S #[bg=#{@DARKEST}]  "
 set-option -g status-right "\
 #[bg=#{@DARKEST}]  \
-#[bg=#{@DARKER},fg=#{?client_prefix,#{@LIGHTEST},#{@DARKEST}}] × #[bg=#{@DARKEST},fg=#{@LIGHTEST}]  \
+#[bg=#{?window_activity_flag,#{@LIGHTEST},#{@DARKER}},fg=#{?client_prefix,#{@LIGHTEST},#{@DARKEST}}] × #[fg=#{?@ALERT,#{@ACTIVITY_DARK},#{@DARKEST}},bg=#{@DARKER}]🛎 #[bg=#{@DARKEST},fg=#{@LIGHTEST}]  \
 #[bg=#{@DARKER}] %b %d %H:%M %a w%U #[bg=#{@DARKER}]#{moon_phase} #{moon_phase_text} "
 
 set-window-option -g window-status-current-format "\
 #[bg=#{@DARKEST},fg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},bold] #I #{?window_zoomed_flag,│,╎} #W \
 #[bg=#{@DARKEST}] "
 set-window-option -g window-status-format "\
-#[bg=#{@DARKER},fg=#{@LIGHTEST},#{?window_last_flag,bold,nobold}] #I #{?window_zoomed_flag,│,╎} #W \
+#[bg=#{?window_activity_flag,#{@ACTIVITY_DARK},#{@DARKER}},fg=#{?window_last_flag,#{@LIGHTEST},#{@LIGHTER}},#{?window_last_flag,bold,nobold}] #I #{?window_zoomed_flag,│,╎} #W \
 #[bg=#{@DARKEST}] "
 
+
+set -g @ALERT 0
+set-hook -g alert-bell {
+    set -g @ALERT 1
+    run -b -d.2 -C {
+		set -g @ALERT 0
+    }
+}
 
 # |,¦
 
