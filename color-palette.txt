@@ -1,0 +1,11 @@
+#080808 black
+#FF005F red
+#00AF5F green
+#D78700 yellow
+#0087D7 blue
+#AF5FD7 purple
+#01AFAF teal
+#D0D0D0 light
+
+#303030 dark
+#FFFFFF white
