@@ -26,7 +26,7 @@ bind c new-window -c "#{pane_current_path}"
 bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 
-bind Space last-pane
+bind Space if -F "#{window_zoomed_flag}" "display-message 'No pane switch while zoomed in'" "last-pane"
 bind C-Space last-window
 
 bind -r C-j resize-pane -D 15
