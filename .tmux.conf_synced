@@ -55,7 +55,7 @@ set -g @INDICATOR colour125
 set -g @ACCENT1_LIGHT colour14
 set -g @ACCENT2_LIGHT color13
 set -g @ACCENT1_DARK colour6
-set -g @ACCENT2_DARK color5
+set -g @ACCENT2_DARK color1
 
 
 
@@ -108,13 +108,23 @@ set-option -g status-right-style none
 set-option -g status-right-length "80"
 set-window-option -g window-status-separator ""
 
-set-option -g status-left							"#[bg=#{@LIGHTEST},fg=#{@ACCENT2_DARK},bold] Session #S #[bg=#{@DARKER},nobold,noitalics,nounderscore] "
-set-option -g status-right							"#[bg=#{@DARKER},fg=#{@LIGHTEST} bold, nounderscore, noitalics] #{?client_prefix,×, } #[bg=#{@ACCENT2_DARK},fg=#{@LIGHTEST}] %Y-%m-%d | %H:%M #[bg=#{@DARKER}] #[bg=#{@DARKEST},fg=#{@LIGHTEST} nobold, nounderscore, noitalics] #{moon_phase} #{moon_phase_text} #[bg=#{@DARKER},fg=#{@LIGHTEST}] #[bg=#{@LIGHTEST},fg=#{@ACCENT2_DARK},bold] #h "
 
-# set-window-option -g window-status-current-format	"#[bg=#{?window_zoomed_flag,@ACCENT2_DARK,@ACCENT1_DARK},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#F #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
-set-window-option -g window-status-current-format	"#[bg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},fg=#{@LIGHTEST},bold,noitalics,nounderscore] #I | #W#{?window_zoomed_flag,°,} #[bg=#{@DARKER},fg=#{@LIGHTEST}] "
-set-window-option -g window-status-format			"#[bg=#{@LIGHTEST},fg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@DARKEST}},noitalics] #I | #W#{?window_zoomed_flag,°,} #[bg=#{@DARKER},fg=#{@DARKER}] "
+set-option -g status-left "\
+#[bg=#{@DARKER},fg=#{@LIGHTEST}] Session #S #[bg=#{@DARKEST}]  "
+set-option -g status-right "\
+#[bg=#{@DARKEST}]  \
+#[bg=#{@DARKER},fg=#{?client_prefix,#{@LIGHTEST},#{@DARKEST}}] × #[bg=#{@DARKEST},fg=#{@LIGHTEST}]  \
+#[bg=#{@DARKER}] %b %d %H:%M %a w%U #[bg=#{@DARKER}]#{moon_phase} #{moon_phase_text} "
 
+set-window-option -g window-status-current-format "\
+#[bg=#{@DARKEST},fg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},bold] #I #{?window_zoomed_flag,│,╎} #W \
+#[bg=#{@DARKEST}] "
+set-window-option -g window-status-format "\
+#[bg=#{@DARKER},fg=#{@LIGHTEST},#{?window_last_flag,bold,nobold}] #I #{?window_zoomed_flag,│,╎} #W \
+#[bg=#{@DARKEST}] "
+
+
+# |,¦
 
 # Set the default terminal mode to 256color mode
 set -g default-terminal "screen-256color"
