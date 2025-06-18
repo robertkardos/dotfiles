@@ -4,7 +4,8 @@ alias ll="ls -Galph"
 alias la='ls -CAF'
 alias l='ls -CF'
 
-alias v='nvim'
+alias v='vim'
+alias n='nvim'
 alias p='python3'
 
 alias cs="cd"
