@@ -1,0 +1,1 @@
+/home/krobz/dotfiles/init_synced.lua

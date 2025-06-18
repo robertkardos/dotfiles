@@ -7,7 +7,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 
 
-space tab			shows open buffers after TAB
 space r				reload .vimrc
 :Maketags
 
@@ -26,6 +25,25 @@ CTRL ]
 CTRL I
 CTRL O
 CTRL T				stack jump shaite
+
+
+
+NEOVIM:
+
+TELESCOPE:
+vim.keymap.set('n', '<space>ff', ':Telescope find_files<cr>')
+vim.keymap.set('n', '<space>fg', ':Telescope git_files<cr>')
+vim.keymap.set('n', '<space>fr', ':Telescope live_grep<cr>')
+vim.keymap.set('n', '<space>fb', ':Telescope buffers<cr>')
+
+
+
+NEOTREE:
+vim.keymap.set('n', '<tab>', ':Neotree toggle<cr>')
+vim.keymap.set('n', '<space><tab>', ':Neotree toggle current reveal_force_cwd<cr>')
+
+
+
 
 ./ctags_script.sh fuckery.c
 
