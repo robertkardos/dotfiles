@@ -65,7 +65,7 @@ set -g @ACTIVITY_DARK color3 # test with: sleep 3 && printf '\a'
 set-option -g status "on"
 
 # default statusbar color
-set-option -g status-style							"bg=#{@DARKER},fg=#{@ACCENT1_LIGHT}"
+set-option -g status-style							"bg=#{?@ALERT,#{@ACTIVITY_DARK},#{@DARKER}},fg=#{@ACCENT1_LIGHT}"
 
 # default window title colors
 set-window-option -g window-status-style			"bg=#{@ACCENT1_DARK},fg=#{@DARKER}"
@@ -122,8 +122,19 @@ set-option -g status-right "\
 set-window-option -g window-status-current-format "\
 #[bg=#{@DARKEST},fg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},bold] #I #{?window_zoomed_flag,│,╎} #W \
 #[bg=#{@DARKEST}] "
+
+# set-window-option -g window-status-current-format "\
+#[bg=#{?@ALERT,#{@ACTIVITY_DARK},#{@DARKEST}},fg=#{?@ALERT,#{LIGHTEST},#{#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}}}},bold] #I #{?window_zoomed_flag,│,╎} #W \
+#[bg=#{@DARKEST}] "
+
+
+# set-window-option -g window-status-current-format "\
+#{?@ALERT,#{#[bg=#{@ACTIVITY_DARK},fg=#{LIGHTEST}]},#{#[bg=#{@DARKEST},fg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},bold]}} #I #{?window_zoomed_flag,│,╎} #W \
+#[bg=#{@DARKEST}] "
+
+
 set-window-option -g window-status-format "\
-#[bg=#{?window_activity_flag,#{@ACTIVITY_DARK},#{@DARKER}},fg=#{?window_last_flag,#{@LIGHTEST},#{@LIGHTER}},#{?window_last_flag,bold,nobold}] #I #{?window_zoomed_flag,│,╎} #W \
+#[bg=#{@DARKER},fg=#{?window_last_flag,#{@LIGHTEST},#{@LIGHTER}},#{?window_last_flag,bold,nobold}] #I #{?window_zoomed_flag,│,╎} #W \
 #[bg=#{@DARKEST}] "
 
 
@@ -143,8 +154,8 @@ set-hook -g alert-bell {
 set -g default-terminal "screen-256color"
 
 # active pane normal, other shaded out
-#setw -g window-style		"fg=#{@LIGHTER},bg=#{@DARKER}"
-#setw -g window-active-style	"fg=#{@LIGHTEST},bg=#{@DARKEST}"
+setw -g window-style		"bg=#{@DARKEST}"
+setw -g window-active-style	"bg=#{@DARKEST}"
 #set-option -g pane-border-indicators arrows
 # set-option -g pane-border-status top
 
