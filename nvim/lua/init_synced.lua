@@ -30,7 +30,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 
-
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
@@ -39,7 +38,7 @@ require("lazy").setup({
 	},
 	-- Configure any other settings here. See the documentation  or more details.
 	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "habamax" } },
+--	install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
@@ -79,6 +78,17 @@ vim.keymap.set('n', '<tab>', ':Neotree toggle<cr>')
 vim.keymap.set('n', '<space><tab>', ':Neotree toggle current reveal_force_cwd<cr>')
 
 vim.keymap.set("n", "<leader>F", ":lua vim.lsp.buf.format()<CR>", { desc = "auto format" })
+
+vim.cmd.colorscheme "night-owl"
+-- vim.cmd.colorscheme "everblush"
+
+-- This part is from https://www.reddit.com/r/neovim/comments/1ayub43/disable_all_italics_in_nvim_lazyvim_distro/ and it makes sure that all italics are turned off because they don't appear outside of tmux and they cause fg-bg inversions while in tmux
+local hl_groups = vim.api.nvim_get_hl(0, {})
+for key, hl_group in pairs(hl_groups) do
+  if hl_group.italic then
+    vim.api.nvim_set_hl(0, key, vim.tbl_extend("force", hl_group, {italic = false}))
+  end
+end
 
 --[[vim.diagnostic.config({
 	virtual_lines = {
