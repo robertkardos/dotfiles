@@ -165,7 +165,7 @@ if !has('nvim')
 	nmap <buffer> gd <plug>(lsp-definition)
 endif
 
-:set signcolumn=no
+:set signcolumn=yes
 
 " NERDTree mappings
 " :nnoremap <leader><tab> :NERDTreeFocus<CR>

@@ -8,7 +8,7 @@ return {
 			require("night-owl").setup({
 				-- These are the default settings
 				bold = true,
-				italics = true,
+				italics = false,
 				underline = true,
 				undercurl = true,
 				transparent_background = false,
@@ -18,20 +18,7 @@ return {
 			inverse = false,
 		}
 	},
-	{ 'Everblush/nvim',  name = 'everblush' },
-	{
-		"scottmckendry/cyberdream.nvim",
-		lazy = false,
-		priority = 1000,
-	},
-	{
-		"nyoom-engineering/oxocarbon.nvim"
-		-- Add in any other configuration;
-		--   event = foo,
-		--   config = bar
-		--   end,
-	},
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ 'Everblush/nvim', name = 'everblush' },
 	{
 		"folke/tokyonight.nvim",
 		priority = 1000,
@@ -68,19 +55,6 @@ return {
 				desc = "Buffer Local Keymaps (which-key)",
 			},
 		},
-	},
-	{
-		"otavioschwanck/arrow.nvim",
-		dependencies = {
-			{ "nvim-tree/nvim-web-devicons" },
-			-- or if using `mini.icons`
-			-- { "echasnovski/mini.icons" },
-		},
-		opts = {
-			show_icons = true,
-			leader_key = ';', -- Recommended to be a single key
-			buffer_leader_key = 'm', -- Per Buffer Mappings
-		}
 	},
 	{
 		"karb94/neoscroll.nvim",
@@ -165,5 +139,42 @@ return {
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
+	{
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>xL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
 	}
 }

@@ -19,7 +19,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		}, true, {})
 		vim.fn.getchar()
 		os.exit(1)
-		end
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -29,7 +29,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
@@ -38,35 +37,56 @@ require("lazy").setup({
 	},
 	-- Configure any other settings here. See the documentation  or more details.
 	-- colorscheme that will be used when installing plugins.
---	install = { colorscheme = { "habamax" } },
+	--	install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
--- cmd = { 'clangd', '--background-index', "--clang-tidy", "--header-insertion=iwyu", "--completion-style=detailed", "--function-arg-placeholders", "--fallback-style=llvm" },
--- root_markers = { '.clangd', 'compile_commands.json', 'compile_flags.txt' },
--- filetypes = { 'c', 'cpp' },
-vim.lsp.config.clangd = {
-	cmd = { 'clangd', '--background-index' },
-	root_markers = { '.clangd', 'compile_commands.json', 'compile_flags.txt' },
-	filetypes = { 'c', 'cpp' },
-}
-vim.lsp.config["lua-language-server"] = {
-	cmd = { "lua-language-server" },
-	root_markers = { ".luarc.json" },
-	filetypes = { 'lua' },
-}
-vim.lsp.enable({ 'clangd', "lua-language-server" })
+
+
+
 
 vim.api.nvim_create_autocmd('LspAttach', {
-	callback = function(ev)
-		local client = vim.lsp.get_client_by_id(ev.data.client_id)
-		-- if client:supports_method('textDocument/completion') then
-		-- 	vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-		-- end
+	group = vim.api.nvim_create_augroup('my.lsp', {}),
+	callback = function(args)
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+		if client:supports_method('textDocument/implementation') then
+			-- Create a keymap for vim.lsp.buf.implementation ...
+		end
+		-- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+		if client:supports_method('textDocument/completion') then
+			-- Optional: trigger autocompletion on EVERY keypress. May be slow!
+			-- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+			-- client.server_capabilities.completionProvider.triggerCharacters = chars
 
-		--		vim.keymap.set("n", "<leader>F", ":vim.lsp.buf.format()<CR>", { desc = "" })
+			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
+		end
+
+
+		-- Auto-format ("lint") on save.
+		-- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+		if not client:supports_method('textDocument/willSaveWaitUntil')
+			and client:supports_method('textDocument/formatting') then
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+				buffer = args.buf,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+				end,
+			})
+		end
 	end,
 })
+
+vim.lsp.enable('luals')
+vim.lsp.enable("clangd")
+
+
+
+
+
+
+
+
 
 
 vim.keymap.set('n', '<space>ff', ':Telescope find_files<cr>')
@@ -78,6 +98,7 @@ vim.keymap.set('n', '<tab>', ':Neotree toggle<cr>')
 vim.keymap.set('n', '<space><tab>', ':Neotree toggle current reveal_force_cwd<cr>')
 
 vim.keymap.set("n", "<leader>F", ":lua vim.lsp.buf.format()<CR>", { desc = "auto format" })
+vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.open_float()<CR>", { desc = "show diagnostics" })
 
 vim.cmd.colorscheme "night-owl"
 -- vim.cmd.colorscheme "everblush"
@@ -85,13 +106,13 @@ vim.cmd.colorscheme "night-owl"
 -- This part is from https://www.reddit.com/r/neovim/comments/1ayub43/disable_all_italics_in_nvim_lazyvim_distro/ and it makes sure that all italics are turned off because they don't appear outside of tmux and they cause fg-bg inversions while in tmux
 local hl_groups = vim.api.nvim_get_hl(0, {})
 for key, hl_group in pairs(hl_groups) do
-  if hl_group.italic then
-    vim.api.nvim_set_hl(0, key, vim.tbl_extend("force", hl_group, {italic = false}))
-  end
+	if hl_group.italic then
+		vim.api.nvim_set_hl(0, key, vim.tbl_extend("force", hl_group, { italic = false }))
+	end
 end
 
---[[vim.diagnostic.config({
+vim.diagnostic.config({
 	virtual_lines = {
 		current_line = true,
 	},
-})]]
+})
