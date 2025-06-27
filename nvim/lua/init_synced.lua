@@ -104,21 +104,27 @@ vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.open_float()<CR>", { desc 
 
 
 
-require('telescope').setup{
-  defaults = {
-    -- Default configuration for telescope goes here:
-    -- config_key = value,
-    mappings = {
-      n = {
-    	  ['<c-d>'] = require('telescope.actions').delete_buffer
-      }, -- n
-      i = {
-        ["<C-h>"] = "which_key",
-        ['<c-d>'] = require('telescope.actions').delete_buffer
-      } -- i
-    } -- mappings
-  }, -- defaults
-} -- telescope setup
+require('telescope').setup {
+	pickers = {
+		find_files = {
+			hidden = true
+		}
+	},
+	defaults = {
+		file_ignore_patterns = {".git"},
+		-- Default configuration for telescope goes here:
+		-- config_key = value,
+		mappings = {
+			n = {
+				['<c-d>'] = require('telescope.actions').delete_buffer
+			}, -- n
+			i = {
+				["<C-h>"] = "which_key",
+				['<c-d>'] = require('telescope.actions').delete_buffer
+			} -- i
+		} -- mappings
+	},  -- defaults
+}       -- telescope setup
 
 
 
@@ -159,7 +165,7 @@ require('lualine').setup({
 	sections = {
 		lualine_a = { 'mode' },
 		lualine_b = { 'branch', 'diff', 'diagnostics' },
-		lualine_c = { {'filename', path = 1} },
+		lualine_c = { { 'filename', path = 1 } },
 		lualine_x = { 'encoding', 'filetype' },
 		lualine_y = { 'progress' },
 		lualine_z = { 'location' }
