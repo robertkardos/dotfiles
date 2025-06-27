@@ -48,7 +48,7 @@ require("lazy").setup({
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('my.lsp', {}),
 	callback = function(args)
-		vim.keymap.set('n', 'grd', ':lua vim.lsp.buf.definition()<cr>')
+		vim.keymap.set('n', 'grd', ':lua vim.lsp.buf.definition()<cr>zz<cr>')
 
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method('textDocument/implementation') then
