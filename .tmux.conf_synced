@@ -57,7 +57,7 @@ set -g @INDICATOR colour125
 set -g @ACCENT1_LIGHT colour14
 set -g @ACCENT2_LIGHT color13
 set -g @ACCENT1_DARK colour6
-set -g @ACCENT2_DARK color1
+set -g @ACCENT2_DARK color5
 set -g @ACTIVITY_DARK color3 # test with: sleep 3 && printf '\a'
 
 
@@ -136,7 +136,7 @@ set-window-option -g window-status-current-format "\
 
 
 set-window-option -g window-status-format "\
-#[bg=#{@DARKER},fg=#{?window_last_flag,#{@LIGHTEST},#{@LIGHTER}},#{?window_last_flag,bold,nobold}] #I #{?window_zoomed_flag,│,╎} #W \
+#[bg=#{@DARKER},fg=#{?window_last_flag,#{@LIGHTER},#{@LIGHTER}},#{?window_last_flag,bold,nobold}] #I #{?window_zoomed_flag,│,╎} #W \
 #[bg=#{@DARKEST}] "
 
 
