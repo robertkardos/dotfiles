@@ -32,3 +32,19 @@ smartextract() {
     echo "'$1' is not a valid file to extract"
   fi
 }
+
+function inputlanguageswitch() {
+	layout=$(setxkbmap -query |grep -e layout: |cut -c 13-14)
+
+	if [[ $layout == "us" ]]; then
+
+	setxkbmap -layout hu
+	# notify-send "Language" "Hu"
+
+	elif [[ $layout == "hu" ]]; then
+
+	# notify-send "Language" "En"
+	setxkbmap -layout us
+
+	fi
+}

@@ -1,0 +1,13 @@
+XF86AudioRaiseVolume
+	amixer set Master 5%+
+XF86AudioLowerVolume
+	amixer set Master 5%-
+
+alt + Escape
+	rofi -show window
+
+super + 
+	rofi -show drun
+
+super + space
+	inputlanguageswitch
