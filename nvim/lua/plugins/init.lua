@@ -19,6 +19,7 @@ return {
 		}
 	},
 	{ 'Everblush/nvim', name = 'everblush' },
+	{ 'lewis6991/gitsigns.nvim', name = 'gitsigns' },
 	{
 		"folke/tokyonight.nvim",
 		priority = 1000,
