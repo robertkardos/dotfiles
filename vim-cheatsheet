@@ -10,6 +10,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 space r				reload .vimrc
 :Maketags
 
+CTRL ^              switch to last buffer
 
 space n				nerdtree focus
 space t				nerdtree toggle
@@ -29,6 +30,8 @@ CTRL T				stack jump shaite
 
 
 NEOVIM:
+
+space d             show diagnostic
 
 TELESCOPE:
 vim.keymap.set('n', '<space>ff', ':Telescope find_files<cr>')
