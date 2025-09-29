@@ -1,5 +1,9 @@
 echo ".bash_functions_synced has been read"
 
+function _-ping() {
+    ping "$1" -O -D | xargs -I '{}' date '+%Y-%m-%d %H:%M:%S: {}'
+}
+
 # Create a new directory and enter it
 function mk() {
   mkdir -p "$@" && cd "$@"
