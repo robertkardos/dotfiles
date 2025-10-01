@@ -82,10 +82,10 @@ set-window-option -g window-status-current-style	"bg=red,fg=#{@DARKER}"
 setw -g mode-style									"bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST}"
 
 # message infos
-set-option -g message-style							"bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST}"
+set-option -g message-style							"bg=#{@DARKER},fg=#{@LIGHTEST}"
 
 # writing commands inactive
-set-option -g message-command-style					"bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST}"
+set-option -g message-command-style					"bg=#{@DARKER},fg=#{@LIGHTEST}"
 
 # pane number display
 #   set-option -g display-panes-active-colour			@LIGHTER
