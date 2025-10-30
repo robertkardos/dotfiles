@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo ".bash_functions_synced has been read"
 
 function _-ping() {
@@ -51,4 +53,12 @@ function inputlanguageswitch() {
 	setxkbmap -layout us
 
 	fi
+}
+
+function reload_gtk_theme() {
+    theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
+    echo "Theme is $theme"
+    gsettings set org.gnome.desktop.interface gtk-theme ''
+    sleep 1
+    gsettings set org.gnome.desktop.interface gtk-theme $theme
 }
