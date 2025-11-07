@@ -96,8 +96,8 @@ vim.keymap.set('n', '<space>fg', ':Telescope git_files<cr>')
 vim.keymap.set('n', '<space>fr', ':Telescope live_grep<cr>')
 vim.keymap.set('n', '<space>fb', ':Telescope buffers<cr>')
 
-vim.keymap.set('n', '<tab>', ':Neotree toggle<cr>')
-vim.keymap.set('n', '<space><tab>', ':Neotree toggle current reveal_force_cwd<cr>')
+vim.keymap.set('n', '<space><tab>', ':Neotree toggle<cr>')
+-- vim.keymap.set('n', '<space><tab>', ':Neotree toggle current reveal_force_cwd<cr>')
 
 vim.keymap.set("n", "<leader>F", ":lua vim.lsp.buf.format()<CR>", { desc = "auto format" })
 vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.open_float()<CR>", { desc = "show diagnostics" })

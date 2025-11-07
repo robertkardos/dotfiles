@@ -32,7 +32,7 @@ nmap <S-w> <C-y>
 nmap <S-s> <C-e>
 
 " BUFFERS
-nmap <tab> :b 
+" nmap <tab> :b 
 nmap <leader>v<tab> :vertical sb 
 nmap <leader>h<tab> :split b 
 
