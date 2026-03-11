@@ -48,17 +48,34 @@ bind l select-pane -R
 
 
 
+set -g @BLACK colour0
+set -g @BLACK_LIGHT colour8
+set -g @RED colour1
+set -g @RED_LIGHT colour9
+set -g @GREEN colour2
+set -g @GREEN_LIGHT colour10
+set -g @YELLOW colour3
+set -g @YELLOW_LIGHT colour11
+set -g @BLUE colour4
+set -g @BLUE_LIGHT colour12
+set -g @VIOLET colour5
+set -g @VIOLET_LIGHT colour13
+set -g @CYAN colour6
+set -g @CYAN_LIGHT colour14
+set -g @WHITE colour7
+set -g @WHITE_LIGHT colour15
+
 
 set -g @DARKEST colour0
 set -g @DARKER colour8
 set -g @LIGHTER colour7
 set -g @LIGHTEST colour15
-set -g @INDICATOR colour125
+set -g @INDICATOR {colour125}
 set -g @ACCENT1_LIGHT colour14
-set -g @ACCENT2_LIGHT color13
+set -g @ACCENT2_LIGHT colour11
 set -g @ACCENT1_DARK colour6
-set -g @ACCENT2_DARK color5
-set -g @ACTIVITY_DARK color3 # test with: sleep 3 && printf '\a'
+set -g @ACCENT2_DARK colour3
+set -g @ACTIVITY_DARK colour11 # test with: sleep 3 && printf '\a'
 
 
 
@@ -79,7 +96,7 @@ set-window-option -g window-status-activity-style	"bg=#{@DARKER},fg=#{@ACCENT2_L
 set-window-option -g window-status-current-style	"bg=red,fg=#{@DARKER}"
 	
 
-setw -g mode-style									"bg=#{@ACCENT1_DARK},fg=#{@LIGHTEST}"
+setw -g mode-style									"bg=#{@ACCENT2_LIGHT},fg=#{@DARKER}, bold"
 
 # message infos
 set-option -g message-style							"bg=#{@DARKER},fg=#{@LIGHTEST}"
@@ -122,7 +139,7 @@ set-option -g status-right "\
 #[bg=#{@DARKER}] %b %d %H:%M %a w%U #[bg=#{@DARKER}]#{moon_phase} #{moon_phase_text} "
 
 set-window-option -g window-status-current-format "\
-#[bg=#{@DARKEST},fg=#{?window_zoomed_flag,#{@ACCENT2_DARK},#{@ACCENT1_DARK}},bold] #I #{?window_zoomed_flag,│,╎} #W \
+#[bg=#{@DARKEST},fg=#{?window_zoomed_flag,#{@ACCENT2_LIGHT},#{@ACCENT1_DARK}},bold] #I #{?window_zoomed_flag,│,╎} #W \
 #[bg=#{@DARKEST}] "
 
 # set-window-option -g window-status-current-format "\
