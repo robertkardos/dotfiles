@@ -47,6 +47,11 @@ sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 # / TMUX STUFF
 
+if [ -f "$HOME/.tigrc" ]; then
+	echo ".tigrc not linked up because it already existsc, MERGE MANUALLY"
+else
+    ln -sv ~/dotfiles/.tigrc ~
+fi
 if [ -f "$HOME/.inputrc" ]; then
 	echo ".inputrc not linked up because it already existsc, MERGE MANUALLY"
 else
