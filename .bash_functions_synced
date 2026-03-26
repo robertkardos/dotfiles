@@ -2,6 +2,18 @@
 
 echo ".bash_functions_synced has been read"
 
+# count the lines of a given commands output and place anchors to make jumping
+# between a long outputs beginning and end easier
+function _-c() {
+    wholecommand=$@
+    jumpanchor=$(tr -dc A-Z </dev/urandom | head -c 8; echo)
+    echo -e "\n\ncommand: $wholecommand\nanchor: $jumpanchor\n\n"
+    $wholecommand | tee >(wc -l > /tmp/outputcounter)
+    counter=$(cat /tmp/outputcounter)
+    echo -e "\n\nlines of output = $counter\nanchor: $jumpanchor"
+    rm /tmp/outputcounter
+}
+
 function _-ping() {
     ping "$1" -O -D | xargs -I '{}' date '+%Y-%m-%d %H:%M:%S: {}'
 }
