@@ -70,7 +70,7 @@ set -g @DARKEST colour0
 set -g @DARKER colour8
 set -g @LIGHTER colour7
 set -g @LIGHTEST colour15
-set -g @INDICATOR {colour125}
+set -g @INDICATOR colour125
 set -g @ACCENT1_LIGHT colour14
 set -g @ACCENT2_LIGHT colour11
 set -g @ACCENT1_DARK colour6
