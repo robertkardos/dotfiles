@@ -42,6 +42,13 @@ require("lazy").setup({
 })
 
 
+vim.api.nvim_create_autocmd('LspAttach', {
+	group = vim.api.nvim_create_augroup('my.lsp', {}),
+	callback = function(args)
+		vim.keymap.set('n', 'grd', ':lua vim.lsp.buf.definition()<cr>zz<cr>')
+	end
+})
+
 --[[
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('my.lsp', {}),
