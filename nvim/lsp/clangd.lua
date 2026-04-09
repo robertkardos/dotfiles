@@ -1,4 +1,4 @@
-vim.lsp.config["clangd"] = {
+return {
 	cmd = {
 		"clangd",
 		"-j=" .. 2,
@@ -25,3 +25,4 @@ vim.lsp.config["clangd"] = {
 		vim.uv.cwd(),
 	},
 }
+

@@ -61,32 +61,20 @@ endif
 set number relativenumber
 highlight CursorLineNr ctermfg=DarkGreen
 
-" set the number of spaces that a tab counts for while performing editing operations
-:set tabstop=4
-:set softtabstop=4
-
-" set the number of spaces to use for each step of (auto)indent
-:set shiftwidth=4
-
-" don't expand tabs to spaces
-:set noexpandtab
-
-" enable automatic indentation, copying indentation from the previous line
-" when starting a new line
-:set autoindent
-
-" indent word-wrapped lines by the same amount as the parent line
-:set breakindent
-
 " when in insert mode, exit it using 'ii'
 " :imap ii <Esc>
 
 " enable file type recognition using a builtin plugin
 filetype plugin on
-" search down the directory tree set path+=**
+" search down the directory tree set path+=**:
 
 " during command-line completion, display all matches upon tab-completion
 set wildmenu
+cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
+cnoremap <expr> <down> wildmenumode() ? "\<right>" : "\<down>"
+cnoremap <expr> <left> wildmenumode() ? "\<up>" : "\<left>"
+cnoremap <expr> <right> wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
+set wildcharm=<C-Z>
 
 " create a 'tags' file for ctags
 command! Maketags !ctags -R .
@@ -229,4 +217,26 @@ map <leader>w :call ToggleWrap()<CR>
 
 " disable/unlink italic highlighting in markdown
 :highlight link markdownItalic NONE
+
+
+" set the number of spaces that a tab counts for while performing editing operations
+set tabstop=4
+set softtabstop=4
+
+" set the number of spaces to use for each step of (auto)indent
+set shiftwidth=4
+
+" don't expand tabs to spaces
+set noexpandtab
+
+set list
+set listchars=tab:·\ ,trail:￮,multispace:￮,lead:\ ,extends:▶,precedes:◀,nbsp:‿ 
+" :set noet|retab!
+
+" enable automatic indentation, copying indentation from the previous line
+" when starting a new line
+set autoindent
+
+" indent word-wrapped lines by the same amount as the parent line
+set breakindent
 

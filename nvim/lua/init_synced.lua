@@ -28,7 +28,6 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
@@ -43,8 +42,7 @@ require("lazy").setup({
 })
 
 
-
-
+--[[
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('my.lsp', {}),
 	callback = function(args)
@@ -60,36 +58,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			-- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
 			-- client.server_capabilities.completionProvider.triggerCharacters = chars
 
-			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
+			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 		end
 
 
 		-- Auto-format ("lint") on save.
 		-- Usually not needed if server supports "textDocument/willSaveWaitUntil".
 		-- if not client:supports_method('textDocument/willSaveWaitUntil')
-		-- 	and client:supports_method('textDocument/formatting') then
-		-- 	vim.api.nvim_create_autocmd('BufWritePre', {
-		-- 		group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-		-- 		buffer = args.buf,
-		-- 		callback = function()
-		-- 			vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-		-- 		end,
-		-- 	})
+		--	and client:supports_method('textDocument/formatting') then
+		--	vim.api.nvim_create_autocmd('BufWritePre', {
+		--		group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+		--		buffer = args.buf,
+		--		callback = function()
+		--			vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+		--		end,
+		--	})
 		-- end
 	end,
 })
+]]
 
 vim.lsp.enable('luals')
 vim.lsp.enable("clangd")
-
-
-
-
-
-
-
-
-
 
 vim.keymap.set('n', '<space>ff', ':Telescope find_files<cr>')
 vim.keymap.set('n', '<space>fg', ':Telescope git_files<cr>')
@@ -111,7 +101,7 @@ require('telescope').setup {
 		}
 	},
 	defaults = {
-		file_ignore_patterns = {".git"},
+		file_ignore_patterns = { ".git" },
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
 		mappings = {
@@ -123,10 +113,10 @@ require('telescope').setup {
 				['<c-d>'] = require('telescope.actions').delete_buffer
 			} -- i
 		} -- mappings
-	},  -- defaults
-}       -- telescope setup
+	}, -- defaults
+}    -- telescope setup
 
-
+require('smear_cursor').enabled = true
 
 require('lualine').setup({
 	--options = { theme = 'night-owl' }
@@ -187,86 +177,83 @@ require('lualine').setup({
 
 
 require('gitsigns').setup {
-  signs = {
-    add          = { text = '┃' },
-    change       = { text = '┃' },
-    delete       = { text = '_' },
-    topdelete    = { text = '‾' },
-    changedelete = { text = '~' },
-    untracked    = { text = '┆' },
-  },
-  signs_staged = {
-    add          = { text = '┃' },
-    change       = { text = '┃' },
-    delete       = { text = '_' },
-    topdelete    = { text = '‾' },
-    changedelete = { text = '~' },
-    untracked    = { text = '┆' },
-  },
-  signs_staged_enable = true,
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  watch_gitdir = {
-    follow_files = true
-  },
-  auto_attach = true,
-  attach_to_untracked = false,
-  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-  current_line_blame_opts = {
-    virt_text = true,
-    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-    delay = 1000,
-    ignore_whitespace = false,
-    virt_text_priority = 100,
-    use_focus = true,
-  },
-  current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
-  sign_priority = 6,
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  max_file_length = 40000, -- Disable if file is longer than this (in lines)
-  preview_config = {
-    -- Options passed to nvim_open_win
-    style = 'minimal',
-    relative = 'cursor',
-    row = 0,
-    col = 1
-  },
-  on_attach = function(bufnr)
-    local gitsigns = require('gitsigns')
+	signs                        = {
+		add          = { text = '┃' },
+		change       = { text = '┃' },
+		delete       = { text = '_' },
+		topdelete    = { text = '‾' },
+		changedelete = { text = '~' },
+		untracked    = { text = '┆' },
+	},
+	signs_staged                 = {
+		add          = { text = '┃' },
+		change       = { text = '┃' },
+		delete       = { text = '_' },
+		topdelete    = { text = '‾' },
+		changedelete = { text = '~' },
+		untracked    = { text = '┆' },
+	},
+	signs_staged_enable          = true,
+	signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
+	numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
+	linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
+	word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
+	watch_gitdir                 = {
+		follow_files = true
+	},
+	auto_attach                  = true,
+	attach_to_untracked          = false,
+	current_line_blame           = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+	current_line_blame_opts      = {
+		virt_text = true,
+		virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+		delay = 1000,
+		ignore_whitespace = false,
+		virt_text_priority = 100,
+		use_focus = true,
+	},
+	current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
+	sign_priority                = 6,
+	update_debounce              = 100,
+	status_formatter             = nil, -- Use default
+	max_file_length              = 40000, -- Disable if file is longer than this (in lines)
+	preview_config               = {
+		-- Options passed to nvim_open_win
+		style = 'minimal',
+		relative = 'cursor',
+		row = 0,
+		col = 1
+	},
+	on_attach = function(bufnr)
+		local gitsigns = require('gitsigns')
 
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
+		local function map(mode, l, r, opts)
+			opts = opts or {}
+			opts.buffer = bufnr
+			vim.keymap.set(mode, l, r, opts)
+		end
 
-    -- Navigation
-    map('n', ']c', function()
-      if vim.wo.diff then
-        vim.cmd.normal({']c', bang = true})
-      else
-        gitsigns.nav_hunk('next')
-      end
-    end)
+		-- Navigation
+		map('n', ']c', function()
+			if vim.wo.diff then
+				vim.cmd.normal({ ']c', bang = true })
+			else
+				gitsigns.nav_hunk('next')
+			end
+		end)
 
-    map('n', '[c', function()
-      if vim.wo.diff then
-        vim.cmd.normal({'[c', bang = true})
-      else
-        gitsigns.nav_hunk('prev')
-      end
-    end)
-    end
+		map('n', '[c', function()
+			if vim.wo.diff then
+				vim.cmd.normal({ '[c', bang = true })
+			else
+				gitsigns.nav_hunk('prev')
+			end
+		end)
+	end
 }
 
 
-
-
 vim.cmd.colorscheme "night-owl"
--- vim.cmd.colorscheme "everblush"
 
 -- This part is from https://www.reddit.com/r/neovim/comments/1ayub43/disable_all_italics_in_nvim_lazyvim_distro/ and it makes sure that all italics are turned off because they don't appear outside of tmux and they cause fg-bg inversions while in tmux
 local hl_groups = vim.api.nvim_get_hl(0, {})

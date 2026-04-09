@@ -1,5 +1,37 @@
 return {
 	{
+		'saghen/blink.cmp',
+		dependencies = { 'rafamadriz/friendly-snippets' },
+		version = '1.*',
+
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			-- All presets have the following mappings:
+			-- C-space: Open menu or open docs if already open
+			-- C-n/C-p or Up/Down: Select next/previous item
+			-- C-e: Hide menu
+			-- C-k: Toggle signature help (if signature.enabled = true)
+			--
+			-- See :h blink-cmp-config-keymap for defining your own keymap
+			keymap = {
+				preset = 'default',
+				['<C-a>'] = { function(cmp) cmp.show() end },
+			},
+			appearance = { nerd_font_variant = 'mono' },
+			completion = { documentation = { auto_show = true } },
+			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
+			signature = { enabled = true },
+
+			-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+			-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+			-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+			--
+			-- See the fuzzy documentation for more information
+			fuzzy = { implementation = "prefer_rust_with_warning" }
+		},
+	},
+	{
 		"oxfist/night-owl.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
@@ -18,7 +50,7 @@ return {
 			inverse = false,
 		}
 	},
-	{ 'Everblush/nvim', name = 'everblush' },
+	{ 'Everblush/nvim',          name = 'everblush' },
 	{ 'lewis6991/gitsigns.nvim', name = 'gitsigns' },
 	{
 		"folke/tokyonight.nvim",
@@ -38,6 +70,17 @@ return {
 			-- vim.cmd [[colorscheme tokyonight-night]]
 			-- vim.o.background = "dark" -- colorscheme is set to latte flavour
 		end
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = function(_, opts)
+			-- Other blankline configuration here
+			return require("indent-rainbowline").make_opts(opts)
+		end,
+		dependencies = {
+			"TheGLander/indent-rainbowline.nvim",
+		},
 	},
 	{
 		"folke/which-key.nvim",
@@ -81,6 +124,28 @@ return {
 		},
 	},
 	{
+		"sphamba/smear-cursor.nvim",
+		opts = {
+			-- Smear cursor when switching buffers or windows.
+			smear_between_buffers = true,
+
+			-- Smear cursor when moving within line or to neighbor lines.
+			-- Use `min_horizontal_distance_smear` and `min_vertical_distance_smear` for finer control
+			smear_between_neighbor_lines = false,
+
+			-- Draw the smear in buffer space instead of screen space when scrolling
+			scroll_buffer_space = true,
+
+			-- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
+			-- Smears and particles will look a lot less blocky.
+			legacy_computing_symbols_support = false,
+
+			-- Smear cursor in insert mode.
+			-- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
+			smear_insert_mode = true,
+		},
+	},
+	{
 		'EvWilson/spelunk.nvim',
 		dependencies = {
 			'nvim-lua/plenary.nvim',  -- For window drawing utilities
@@ -107,6 +172,8 @@ return {
 				},
 				window_mappings = {
 					close = '<esc>',
+					cursor_down = '<Down>',
+					cursor_up = '<Up>',
 				},
 				enable_status_col_display = true,
 				enable_persist = true
@@ -115,34 +182,12 @@ return {
 	},
 	{
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.8',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		keys = {
-			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" }
-		}
-	},
-	{
-	  "nvim-telescope/telescope.nvim",
-	  dependencies = {
-		{ 
-			"nvim-telescope/telescope-live-grep-args.nvim" ,
-			-- This will not install any breaking changes.
-			-- For major updates, this must be adjusted manually.
-			version = "^1.0.0",
+		version = '*',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			-- optional but recommended
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 		},
-	  },
-	  config = function()
-		local telescope = require("telescope")
-
-		-- first setup telescope
-		telescope.setup({
-			-- your config
-			vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-		})
-
-		-- then load the extension
-		telescope.load_extension("live_grep_args")
-	  end
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -200,5 +245,5 @@ return {
 				desc = "Quickfix List (Trouble)",
 			},
 		},
-	}
+	},
 }
