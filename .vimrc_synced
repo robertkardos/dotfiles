@@ -21,8 +21,11 @@ if !has('nvim')
 	map <leader>r :source ~/.vimrc<CR>
 endif
 
+nnoremap <C-s> :w<CR>
 nmap <leader>e :edit ./
 nmap <leader>E :edit ~/
+inoremap <C-s> <Esc>:w<CR>a
+
 
 " SCROLLING
 nmap <C-up> <C-y>
