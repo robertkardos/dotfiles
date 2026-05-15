@@ -87,6 +87,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.lsp.enable('luals')
 vim.lsp.enable("clangd")
+vim.lsp.enable("pylsp")
 
 vim.keymap.set('n', '<space>ff', ':Telescope find_files<cr>')
 vim.keymap.set('n', '<space>fg', ':Telescope git_files<cr>')
