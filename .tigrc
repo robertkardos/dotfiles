@@ -1,5 +1,6 @@
 set refresh-mode = auto
 set refresh-interval = 5
+set tab-size = 4
 
 color cursor        color15 color8  
 
