@@ -1,5 +1,7 @@
 set shell=/bin/sh
 
+set exrc
+
 " set no compatible mode
 set nocompatible
 set mouse=a
